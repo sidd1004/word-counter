@@ -28,7 +28,7 @@ const store = createStore(
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      { routes }
+      {routes}
     </Router>
   </Provider>,
   document.getElementById('app') // eslint-disable-line no-undef

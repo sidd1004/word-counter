@@ -1,26 +1,11 @@
-import {
-  REQUEST_POSTS, RECEIVE_POSTS
-} from '../actions';
+import { REQUEST_TEXT } from '../actions';
 
-export default (state = {
-  isFetching: false,
-  didInvalidate: false,
-  posts: []
-}, action) => {
+export default (state = { text: null }, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
+    case REQUEST_TEXT:
       return {
         ...state,
-        isFetching: true,
-        didInvalidate: false
-      };
-    case RECEIVE_POSTS:
-      return {
-        ...state,
-        isFetching: false,
-        didInvalidate: false,
-        posts: action.posts,
-        lastUpdated: action.receivedAt
+        text: action.payload
       };
     default:
       return state;

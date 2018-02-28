@@ -1,6 +1,20 @@
-import api from '../lib/api';
+import axios from 'axios';
 
-export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const REQUEST_TEXT = 'REQUEST_TEXT';
+
+export const fetchText = () => {
+  return function (dispatch) {
+    axios.get('http://www.randomtext.me/api/')
+      .then((response) => {
+        dispatch({
+          type: REQUEST_TEXT,
+          payload: response.data.text_out
+        });
+      });
+  };
+};
+
+/* export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const REQUEST_POST = 'REQUEST_POST';
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -50,3 +64,4 @@ export const fetchPostsIfNeeded = () => (
     }
   }
 );
+ */
